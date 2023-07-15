@@ -1,0 +1,16 @@
+.card {
+  width: 50%;
+  margin: 3% auto;
+}
+
+
+.title {
+  color: white;
+  /* font-family: "Helvetica Neue", Arial, sans-serif; */
+  font-size: 48px;
+  font-family: 'Carter One', cursive;
+  text-transform: uppercase;
+  text-align: center;
+  text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.8);
+  letter-spacing: 2px;
+}
