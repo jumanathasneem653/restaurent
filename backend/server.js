@@ -61,3 +61,40 @@ app.post("/signup", async(req,res) =>{
         res.json("notexist");
     }
 })
+app.post('/api/Contact', (req, res) => {
+    
+    console.log(req.body);
+    res.json({ message: 'Thank you for your message!' });
+  });
+
+  const reviewSchema = new mongoose.Schema({
+    name: { type: String, required: true },
+    email: { type: String, required: true },
+    review: { type: String, required: true },
+  }, { timestamps: true });
+  
+  
+  const Review = mongoose.model('Review', reviewSchema);
+  
+  
+  app.post("/Review", async(req, res) => {
+    const { name, email, review } = req.body;
+  
+    
+    const newReview = new Review({
+      name,
+      email,
+      review,
+    });
+  
+    // Save the review to the database
+    newReview.save()
+      .then((review) => {
+        console.log('Review saved:', review);
+        res.status(201).json({ message: 'Review submitted successfully' });
+      })
+      .catch((error) => {
+        console.error('Error saving review:', error);
+        res.status(500).json({ error: 'An error occurred while saving the review' });
+      });
+  });
